@@ -121,8 +121,8 @@
 	<developers>
 		<developer>
 			<name>Zhou Yu</name>
-			<id>zhouyu411502</id>
-			<email>www.zhoubenyu.com@163.com</email>
+			<id>benyzhous</id>
+			<email>benyzhous@gmail.com</email>
 			<roles>
 				<role>Developer</role>
 			</roles>
@@ -136,14 +136,16 @@
 	</organization>
 
 	<scm>
-		<url>scm:git:git@github.com:zhouyu411502/springboot-quick-build</url>
-		<connection>scm:git:git@github.com:zhouyu411502/springboot-quick-build</connection>
+		<url>scm:git:git@github.com:benyzhous/springboot-quick-build</url>
+		<connection>scm:git:git@github.com:benyzhous/springboot-quick-build</connection>
 		<tag>springboot-quick-build</tag>
 	</scm>
 
-	<url>https://github.com/zhouyu411502/springboot-quick-build</url>
+	<url>https://github.com/benyzhous/springboot-quick-build</url>
 	<name>springboot-quick-build</name>
-	<description>Distributed Configuration Management Platform.</description>
+	<description>
+		This is a personal springboot framework based on the development of the tool collection; he includes springboot-autoconfigure-redis, springboot-autoconfigure-mybatis, weixin-mp-sdk, weixin-third-sdk;
+	</description>
 
 	<profiles>
 		<profile>
