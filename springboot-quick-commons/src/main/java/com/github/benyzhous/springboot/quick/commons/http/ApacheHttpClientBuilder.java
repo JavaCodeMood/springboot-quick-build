@@ -25,7 +25,7 @@ public interface ApacheHttpClientBuilder {
   /**
    * 代理服务器端口
    *
-   * @param httpProxyPort
+   * @param httpProxyPort 代理
    */
   ApacheHttpClientBuilder httpProxyPort(int httpProxyPort);
 

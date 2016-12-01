@@ -26,6 +26,8 @@
 
 	<modules>
 		<module>weixin-quick-parent</module>
+		<module>springboot-quick-autoconfigures</module>
+		<module>springboot-quick-commons</module>
 	</modules>
 
 	<inceptionYear>2016</inceptionYear>
