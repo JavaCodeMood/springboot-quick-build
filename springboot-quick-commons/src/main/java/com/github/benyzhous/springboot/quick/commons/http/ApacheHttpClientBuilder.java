@@ -18,7 +18,7 @@ public interface ApacheHttpClientBuilder {
   /**
    * 代理服务器地址
    *
-   * @param httpProxyHost
+   * @param httpProxyHost 代理host 
    */
   ApacheHttpClientBuilder httpProxyHost(String httpProxyHost);
 

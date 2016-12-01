@@ -24,7 +24,7 @@ public class BaseException extends RuntimeException {
     }
 
     /**
-     * 指定消息&异常
+     * 指定消息异常
      *
      * @param message 异常内容
      * @param cause   异常

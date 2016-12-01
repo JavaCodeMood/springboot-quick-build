@@ -4,3 +4,4 @@
 .settings/
 logs/
 .svn/
+/.apt_generated/

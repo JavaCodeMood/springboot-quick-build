@@ -21,8 +21,8 @@ public class SHA1 {
 	/**
 	 * 串接arr参数，生成sha1 digest
 	 *
-	 * @param arr
-	 * @return
+	 * @param arr 集合参数
+	 * @return 加密后结果
 	 */
 	public static String gen(String... arr) throws NoSuchAlgorithmException {
 		Arrays.sort(arr);
@@ -36,8 +36,8 @@ public class SHA1 {
 	/**
 	 * 用&串接arr参数，生成sha1 digest
 	 *
-	 * @param arr
-	 * @return
+	 * @param arr 集合参数
+	 * @return 加密后结果
 	 */
 	public static String genWithAmple(String... arr) throws NoSuchAlgorithmException {
 		Arrays.sort(arr);
