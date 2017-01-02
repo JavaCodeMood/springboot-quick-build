@@ -28,6 +28,7 @@
 		<module>weixin-quick-parent</module>
 		<module>springboot-quick-autoconfigures</module>
 		<module>springboot-quick-commons</module>
+		<module>sharding-jdbc-demo</module>
 	</modules>
 
 	<inceptionYear>2016</inceptionYear>
