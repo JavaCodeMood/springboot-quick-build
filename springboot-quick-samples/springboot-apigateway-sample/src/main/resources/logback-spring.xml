@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+    <!-- 引入配置文件参数 -->
+    <property resource="application.properties" />
+
+    <include resource="com/github/benyzhous/logback/config/xml/file-appender.xml" />
+    <include resource="com/github/benyzhous/logback/config/xml/sentry-appender.xml" />
+
+    <include resource="org/springframework/boot/logging/logback/defaults.xml" />
+    <include resource="org/springframework/boot/logging/logback/console-appender.xml"/>
+
+    <!-- 开发环境 -->
+    <springProfile name="dev,test">
+        <root level="INFO">
+            <appender-ref ref="CONSOLE" />
+            <appender-ref ref="FILE" />
+            <appender-ref ref="ERROR_FILE" />
+            <!--<appender-ref ref="Sentry"/>-->
+        </root>
+    </springProfile>
+
+    <springProfile name="gamma,prod">
+        <root level="INFO">
+            <appender-ref ref="CONSOLE" />
+            <appender-ref ref="FILE" />
+            <appender-ref ref="ERROR_FILE" />
+            <appender-ref ref="Sentry"/>
+        </root>
+    </springProfile>
+
+</configuration>

@@ -1,0 +1,12 @@
+{"properties": [
+  {
+    "name": "logging.maxHistory",
+    "type": "java.lang.String",
+    "description": "日志最大存储天数'"
+  },
+  {
+    "name": "logging.maxFileSize",
+    "type": "java.lang.String",
+    "description": "单日志文件最大容量'"
+  }
+]}

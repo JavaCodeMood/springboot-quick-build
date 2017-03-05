@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<included>
+    <!-- sentry log server -->
+    <appender name="Sentry" class="com.getsentry.raven.logback.SentryAppender">
+        <!-- 服务启动注入的变量 -->
+        <dsn>${sentry.dsn}</dsn>
+        <tags>service_name:${spring.application.name},pid:${PID:- },profile:${spring.profiles.active}</tags>
+        <!-- Optional, allows to select the ravenFactory -->
+        <!--<ravenFactory>com.getsentry.raven.DefaultRavenFactory</ravenFactory> -->
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>ERROR</level>
+        </filter>
+    </appender>
+</included>

@@ -25,10 +25,12 @@
 
 
 	<modules>
-		<module>weixin-quick-parent</module>
 		<module>springboot-quick-autoconfigures</module>
-		<module>springboot-quick-commons</module>
+		<module>commons-quick</module>
 		<module>sharding-jdbc-demo</module>
+		<module>springboot-web-core</module>
+		<module>logback-config-xml</module>
+		<module>springboot-quick-samples</module>
 	</modules>
 
 	<inceptionYear>2016</inceptionYear>
