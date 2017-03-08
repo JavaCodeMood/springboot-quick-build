@@ -11,6 +11,8 @@ import com.dangdang.ddframe.rdb.sharding.api.rule.TableRule;
 import com.dangdang.ddframe.rdb.sharding.api.rule.TableRule.TableRuleBuilder;
 import com.dangdang.ddframe.rdb.sharding.api.strategy.database.DatabaseShardingStrategy;
 import com.dangdang.ddframe.rdb.sharding.api.strategy.table.TableShardingStrategy;
+import com.dangdang.ddframe.rdb.sharding.id.generator.self.CommonSelfIdGenerator;
+import com.dangdang.ddframe.rdb.sharding.id.generator.self.time.AbstractClock;
 import com.github.benyzhous.springboot.sharding.jdbc.masterslave.algorithm.ModuloDatabaseShardingAlgorithm;
 import com.github.benyzhous.springboot.sharding.jdbc.masterslave.algorithm.SingleKeyModuloTableShardingAlgorithm;
 
@@ -56,5 +58,12 @@ public class ShardingRule {
 	TableShardingStrategy TableShardingStrategy(){
 		return new TableShardingStrategy("order_id", new SingleKeyModuloTableShardingAlgorithm());
 	}
+	
+	@Bean
+    public CommonSelfIdGenerator commonSelfIdGenerator() {
+        CommonSelfIdGenerator.setClock(AbstractClock.systemClock());
+        CommonSelfIdGenerator commonSelfIdGenerator = new CommonSelfIdGenerator();
+        return commonSelfIdGenerator;
+    }
 }
  

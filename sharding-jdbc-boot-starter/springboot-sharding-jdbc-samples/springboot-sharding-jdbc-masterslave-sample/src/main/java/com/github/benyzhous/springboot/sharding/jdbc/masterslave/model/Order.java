@@ -16,7 +16,7 @@ public final class Order {
 		return orderId;
 	}
 
-	public void setOrderId(final long orderId) {
+	public void setOrderId(long orderId) {
 		this.orderId = orderId;
 	}
 

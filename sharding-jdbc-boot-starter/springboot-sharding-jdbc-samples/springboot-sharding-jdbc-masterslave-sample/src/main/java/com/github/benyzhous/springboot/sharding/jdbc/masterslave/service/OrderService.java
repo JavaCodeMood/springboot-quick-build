@@ -17,19 +17,38 @@ import tk.mybatis.mapper.entity.Example;
  * @author benyzhous@gmail.com
  */
 @Service
-public class OrderServcie {
+public class OrderService {
 	
 	@Autowired
 	OrderMapper orderMapper;
 	
+	public void deleteAll(){
+		orderMapper.deleteAll();
+	}
 	public List<Order> selectAll(){
 		return orderMapper.selectAll();
 	}
 	
-	public List<Order> selectOrderByUserId(Integer userId){
+	public List<Order> select(Order order){
+		return orderMapper.select(order);
+	}
+	
+	public List<Order> selectByExample(String orderId){
 		Example example = new Example(Order.class);
-		example.createCriteria().andEqualTo("userId", userId);
+		example.createCriteria().andEqualTo("orderId", orderId);
 		return orderMapper.selectByExample(example);
+	}
+	
+	public int selectCount(Order order){
+		return orderMapper.selectCount(order);
+	}
+	
+	public Order selectOne(Order order){
+		return orderMapper.selectOne(order);
+	}
+	
+	public int insertSelective(Order order){
+		return orderMapper.insert(order);
 	}
 	
 	public void saveOrder(Order order){

@@ -8,16 +8,6 @@ import com.dangdang.ddframe.rdb.sharding.api.ShardingValue;
 import com.dangdang.ddframe.rdb.sharding.api.strategy.database.SingleKeyDatabaseShardingAlgorithm;
 import com.google.common.collect.Range;
 
-/**
- * ProjectName: sharding-jdbc-demo <br/>
- * ClassName: ModuloDatabaseShardingAlgorithm <br/>
- * Date: 2017年1月1日 下午1:17:12 <br/>
- * 
- * @author chababa
- * @version
- * @since JDK 1.7
- * @see
- */
 public final class ModuloDatabaseShardingAlgorithm implements SingleKeyDatabaseShardingAlgorithm<Integer> {
 
 	@Override
