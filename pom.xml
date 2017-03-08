@@ -11,7 +11,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>1.4.2.RELEASE</version>
+		<version>1.5.2.RELEASE</version>
 	</parent>
 
 	<properties>
@@ -27,10 +27,10 @@
 	<modules>
 		<module>springboot-quick-autoconfigures</module>
 		<module>commons-quick</module>
-		<module>sharding-jdbc-demo</module>
 		<module>springboot-web-core</module>
 		<module>logback-config-xml</module>
 		<module>springboot-quick-samples</module>
+		<module>sharding-jdbc-boot-starter</module>
 	</modules>
 
 	<inceptionYear>2016</inceptionYear>
@@ -133,7 +133,7 @@
 					</execution>
 				</executions>
 			</plugin>
-			<plugin>
+			<!-- <plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-javadoc-plugin</artifactId>
 				<executions>
@@ -144,7 +144,7 @@
 						</goals>
 					</execution>
 				</executions>
-			</plugin>
+			</plugin> -->
 			<plugin>
 				<!-- this fix is needed for the eclipse-plugin to get the right java-version -->
 				<groupId>org.apache.maven.plugins</groupId>

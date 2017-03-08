@@ -14,8 +14,6 @@
     <springProfile name="dev,test">
         <root level="INFO">
             <appender-ref ref="CONSOLE" />
-            <appender-ref ref="FILE" />
-            <appender-ref ref="ERROR_FILE" />
             <!--<appender-ref ref="Sentry"/>-->
         </root>
     </springProfile>
