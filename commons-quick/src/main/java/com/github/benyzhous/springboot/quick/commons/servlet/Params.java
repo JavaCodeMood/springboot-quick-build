@@ -1,18 +1,28 @@
 package com.github.benyzhous.springboot.quick.commons.servlet;
 
-/**
- * Created by chababa on 7/12/16.
- */
+import java.nio.ByteBuffer;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Date;
+import java.util.Enumeration;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.lang3.StringUtils;
+
 import com.github.benyzhous.springboot.quick.commons.exception.MissingParameterException;
 
-import java.nio.ByteBuffer;
-import java.util.*;
-
+/**
+ * 获取request相关参数工具类
+ * 
+ * @author benyzhous@gmail.com
+ */
 public class Params {
 	public static HashMap<String, String> requestToMap(HttpServletRequest request) {
 
@@ -25,7 +35,39 @@ public class Params {
 		}
 		return parameterMap;
 	}
+	
+	public static HashMap<String, Object> requestToMapObject(HttpServletRequest request) {
 
+		HashMap<String, Object> parameterMap = new HashMap<String, Object>();
+		Enumeration<String> names = request.getParameterNames();
+		if (names != null) {
+			Collections.list(names).stream().filter(name -> name != null).forEach(name -> {
+				String value = request.getParameter(name);
+				if(StringUtils.isNotEmpty(value)){
+					parameterMap.put(name.toString(), request.getParameter(name.toString()));
+				}else{
+					String[] values = request.getParameterValues(name);	
+					parameterMap.put(name.toString(), values);
+				}
+			});
+		}
+		return parameterMap;
+	}
+	
+	/**
+	 * get request headers
+	 */
+	public static Map<String, String> getHeadersInfo(HttpServletRequest request) {
+		Map<String, String> map = new HashMap<String, String>();
+		Enumeration<String> headerNames = request.getHeaderNames();
+		while (headerNames.hasMoreElements()) {
+			String key = (String) headerNames.nextElement();
+			String value = request.getHeader(key);
+			map.put(key, value);
+		}
+		return map;
+	}
+	  
 	public static Object notNull(Object o) throws MissingParameterException {
 		if (o != null) {
 			return o;

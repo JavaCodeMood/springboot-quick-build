@@ -56,7 +56,7 @@ public class Sign {
     //HTTP PUT
     private static final String HTTP_METHOD_PUT = "put";
     //HTTP HEADER是否转换成小写（部分WEB容器中接受到的所有HEADER的KEY都是小写）
-    private static final boolean HTTP_HEADER_TO_LOWER_CASE = false;
+    private static final boolean HTTP_HEADER_TO_LOWER_CASE = true;
 
     //签名密钥Map,用于存储多对服务端签名计算密钥,一旦正在使用的密钥泄露,只需要将密钥列表中的其他密钥配置到网关即可进行密钥热替换
     private static Map<String, String> signSecretMap = new HashMap<String, String>();
@@ -64,8 +64,6 @@ public class Sign {
     static {
         //TODO：修改为自己的密钥组合
         signSecretMap.put("kaishu2099", "kaishu2099");
-        signSecretMap.put("DemoKey2", "DemoSecret2");
-        signSecretMap.put("DemoKey3", "DemoSecret3");
     }
 
     /**
@@ -78,10 +76,10 @@ public class Sign {
         String uri = "/list";
         String httpMethod = "GET";
         Map<String, String> headers = new HashMap<String, String>();
-        headers.put(CA_PROXY_SIGN, "YTaCd7ZCm6wRYY/mc2Dj4lQOviuR4oSJA9YGxjYHYIo=");
-        headers.put(CA_PROXY_SIGN_HEADERS, "RequestId,X-Ca-Proxy-Signature-Secret-Key");
-        headers.put(CA_PROXY_SIGN_SECRET_KEY, "kaishu2099");
-        headers.put("RequestId", "1609A1D2-2845-488E-B052-9BA2143D51B5");
+        headers.put("x-ca-proxy-signature", "YTaCd7ZCm6wRYY/mc2Dj4lQOviuR4oSJA9YGxjYHYIo=");
+        headers.put("x-ca-proxy-signature-headers", "RequestId,X-Ca-Proxy-Signature-Secret-Key");
+        headers.put("x-ca-proxy-signature-secret-key", "kaishu2099");
+        headers.put("requestid", "1609A1D2-2845-488E-B052-9BA2143D51B5");
         //headers.put("HeaderKey2", "HeaderValue2");
 
         Map<String, Object> paramsMap = new HashMap<String, Object>();
@@ -92,7 +90,7 @@ public class Sign {
 
         byte[] inputStreamBytes = new byte[]{};
 
-        String gatewaySign = headers.get(CA_PROXY_SIGN);
+        String gatewaySign = headers.get("x-ca-proxy-signature");
         System.out.println("API网关签名:" + gatewaySign);
 
         String serviceSign = serviceSign(uri, httpMethod, headers, paramsMap, inputStreamBytes);

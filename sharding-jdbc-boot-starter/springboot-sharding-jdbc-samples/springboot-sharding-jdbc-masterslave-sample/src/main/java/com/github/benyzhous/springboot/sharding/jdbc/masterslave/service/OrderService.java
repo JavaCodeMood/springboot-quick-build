@@ -21,7 +21,7 @@ import tk.mybatis.mapper.entity.Example;
  * @author benyzhous@gmail.com
  */
 @Service
-@Transactional//事务控制
+@Transactional // 事务控制
 public class OrderService {
 	// id生成器
 	@Autowired
@@ -40,9 +40,9 @@ public class OrderService {
 			Order order = new Order();
 			order.setOrderId(commonSelfIdGenerator.generateId().longValue());
 			order.setUserId(2);
-			if(i==3){
-				throw new RuntimeException("test transaction");
-			}
+			/*
+			 * if(i==3){ throw new RuntimeException("test transaction"); }
+			 */
 			order.setStatus("1");
 			orderList.add(order);
 			orderMapper.insert(order);
