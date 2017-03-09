@@ -29,7 +29,7 @@ public class OrderServiceTest {
 	OrderService orderService;
 	
 	
-	@Test
+	//@Test
 	public void save(){
 		orderService.deleteAll();
 		// 生成1000条数据，看看分布情况
@@ -44,8 +44,25 @@ public class OrderServiceTest {
 	}
 	
 	@Test
+	public void saveTransaction(){
+		orderService.deleteAll();
+		orderService.saveTransaction();
+	}
+	
+	
+	@Test
 	public void selectAll(){
 		List<Order> orderList = orderService.selectAll();
+		orderList.forEach(order -> {
+			System.err.println(order.toString());
+		});
+	}
+	
+	
+	//使用Hint强制路由主库示例
+	@Test
+	public void selectAllHint(){
+		List<Order> orderList = orderService.selectAllHint();
 		orderList.forEach(order -> {
 			System.err.println(order.toString());
 		});

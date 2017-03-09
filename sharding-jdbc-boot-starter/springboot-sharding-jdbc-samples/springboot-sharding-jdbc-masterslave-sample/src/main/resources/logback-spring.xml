@@ -13,7 +13,7 @@
 
 	<!-- 开发环境 -->
 	<springProfile name="dev,test">
-		<root level="INFO">
+		<root level="DEBUG">
 			<appender-ref ref="CONSOLE" />
 			<appender-ref ref="FILE" />
 			<appender-ref ref="ERROR_FILE" />
