@@ -11,7 +11,9 @@ import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -37,8 +39,9 @@ public class GatewaySignatureVerificationFilter implements Filter {
 	}
 
 	@Override
-	public void doFilter(ServletRequest servletRequest, ServletResponse response, FilterChain chain) throws IOException, ServletException {
+	public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain chain) throws IOException, ServletException {
 		HttpServletRequest request = (HttpServletRequest) servletRequest;
+		HttpServletResponse response = (HttpServletResponse) servletResponse;
 		ServletRequest requestWrapper = servletRequest;
 		
 		String uri = request.getRequestURI();
@@ -48,6 +51,10 @@ public class GatewaySignatureVerificationFilter implements Filter {
 		
 		String gatewaySign = headers.get("x-ca-proxy-signature");
 		logger.info(" -->> API网关签名：{}", gatewaySign);
+		if(StringUtils.isEmpty(gatewaySign)){
+			outInvalidSignature(response);
+			return;
+		}
 	        
 		// request body bytes
 		byte[] inputStreamBytes = new byte[]{};
@@ -65,14 +72,14 @@ public class GatewaySignatureVerificationFilter implements Filter {
 			if(!gatewaySign.equals(serviceSign)){
 				// 后端对 API 网关的签名字符串校验后，如果校验失败，
 				// 建议返回 errorcode = 403；errormessage = “InvalidSignature”
-				
-				response.setContentType("application/json");  
-				response.getWriter().write("{errorcode:403,errormessage:'InvalidSignature'}");  
+				outInvalidSignature(response);
 				return;
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 			logger.error("ApiGateway验证签名错误:{}",e.getMessage());
+			outInternalError(response);
+			return;
 		}
 		chain.doFilter(requestWrapper, response);
 	}
@@ -80,5 +87,28 @@ public class GatewaySignatureVerificationFilter implements Filter {
 	@Override
 	public void destroy() {
 
+	}
+	/**
+	 * 服务器错误，按照网关建议返回
+	 */
+	void outInternalError(HttpServletResponse response) {
+		try {
+			response.setContentType("application/json");  
+			response.getWriter().write("{\"errorcode\":500,\"errormessage\":\"InternalError\"}");
+		} catch (IOException e) {
+			e.printStackTrace();
+		} 
+	}
+	
+	/**
+	 * 签名无效，按照网关建议返回
+	 */
+	void outInvalidSignature(HttpServletResponse response) {
+		try {
+			response.setContentType("application/json");  
+			response.getWriter().write("{\"errorcode\":403,\"errormessage\":\"InvalidSignature\"}");  
+		} catch (IOException e) {
+			e.printStackTrace();
+		} 
 	}
 }

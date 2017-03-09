@@ -25,7 +25,7 @@ import com.github.benyzhous.apigateway.vo.JsonBodyVO;
 public class ApiGatewayController {
 	private Logger logger = LoggerFactory.getLogger(getClass());
 
-	@GetMapping(value="get")
+	@GetMapping(value="/list")
 	public String get(HttpServletRequest request) {
 
 		Enumeration<String> headerNames = request.getHeaderNames();
