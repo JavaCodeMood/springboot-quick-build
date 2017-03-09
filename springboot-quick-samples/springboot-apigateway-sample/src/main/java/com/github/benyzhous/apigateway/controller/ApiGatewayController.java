@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.github.benyzhous.apigateway.vo.JsonBodyVO;
-import com.github.benyzhous.commons.quick.servlet.Params;
 
 /**
  * ProjectName: springboot-apigateway-sample <br/>
@@ -28,7 +27,6 @@ public class ApiGatewayController {
 
 	@GetMapping(value="get")
 	public String get(HttpServletRequest request) {
-		logger.info("\r\n------------------------------request params------------------------------\r\n", Params.requestToMap(request));
 
 		Enumeration<String> headerNames = request.getHeaderNames();
 		while (headerNames.hasMoreElements()) {
@@ -41,7 +39,6 @@ public class ApiGatewayController {
 	
 	@PostMapping(value = "/post")
 	public String list(HttpServletRequest request, @RequestBody JsonBodyVO jsonBodyVO) {
-		logger.info("\r\n------------------------------request params------------------------------\r\n", Params.requestToMap(request));
 		System.err.println(jsonBodyVO.toString());
 		Enumeration<String> headerNames = request.getHeaderNames();
 		while (headerNames.hasMoreElements()) {

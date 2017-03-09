@@ -1,0 +1,18 @@
+sharding:
+    jdbc:
+        masters:
+            - master:
+                name: dbtbl_master_0
+                url: jdbc:mysql://127.0.0.1:3306/dbtbl_0_master
+                class: com.mysql.jdbc.Driver
+                username: zhouyu
+                password: Kaishu2099
+                slaves: jdbc:mysql://127.0.0.1:3307/dbtbl_0_master
+            - master:
+                name: dbtbl_master_1
+                url: jdbc:mysql://127.0.0.1:3306/dbtbl_1_master
+                class: com.mysql.jdbc.Driver
+                username: zhouyu
+                password: Kaishu2099
+                slaves: jdbc:mysql://127.0.0.1:3307/dbtbl_1_master       
+

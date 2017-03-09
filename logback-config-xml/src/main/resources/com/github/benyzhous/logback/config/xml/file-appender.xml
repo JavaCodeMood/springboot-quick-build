@@ -16,9 +16,9 @@
             <timeBasedFileNamingAndTriggeringPolicy
                     class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
                 <!-- or whenever the file size reaches 64 MB -->
-                <maxFileSize>${logging.maxFileSize}</maxFileSize>
+                <maxFileSize>128MB</maxFileSize>
             </timeBasedFileNamingAndTriggeringPolicy>
-            <MaxHistory>${logging.maxHistory}</MaxHistory>
+            <MaxHistory>30</MaxHistory>
         </rollingPolicy>
         <encoder>
             <Pattern>
@@ -35,7 +35,7 @@
             <timeBasedFileNamingAndTriggeringPolicy
                     class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
                 <!-- or whenever the file size reaches 64 MB -->
-                <maxFileSize>${logging.maxFileSize}</maxFileSize>
+                <maxFileSize>128MB</maxFileSize>
             </timeBasedFileNamingAndTriggeringPolicy>
         </rollingPolicy>
         <encoder>

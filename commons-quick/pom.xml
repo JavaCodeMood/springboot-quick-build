@@ -43,21 +43,4 @@
 		</dependency>
 	</dependencies>
 
-	<organization>
-		<name>KaiSheng</name>
-		<url>http://www.kaishustory.com</url>
-	</organization>
-
-	<scm>
-		<url>scm:git:git@github.com:benyzhous/springboot-quick-build</url>
-		<connection>scm:git:git@github.com:benyzhous/springboot-quick-build</connection>
-		<tag>springboot-commons-quick-1.0</tag>
-	</scm>
-
-	<url>https://github.com/benyzhous/springboot-quick-build</url>
-	<name>springboot-quick-build</name>
-	<description>
-		This is a personal springboot framework based on the development of the tool collection; he includes springboot-autoconfigure-redis, springboot-autoconfigure-mybatis, weixin-mp-sdk, weixin-third-sdk;
-	</description>
-
 </project>
